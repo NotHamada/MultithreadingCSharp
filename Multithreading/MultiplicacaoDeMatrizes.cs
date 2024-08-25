@@ -4,11 +4,15 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-public class MultiplicacaoDeMatrizes
+public interface IMultiplicacaoDeMatrizes
 {
-    public static void Multiplicacao()
+    void Multiplicacao(int size);
+}
+
+public class MultiplicacaoDeMatrizes : IMultiplicacaoDeMatrizes
+{
+    public void Multiplicacao(int size)
     {
-        int size = 100; // Alterar para 1000, 10000, 100000 conforme necessário
         int[,] matrixA = GenerateMatrix(size);
         int[,] matrixB = GenerateMatrix(size);
 

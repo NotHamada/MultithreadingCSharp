@@ -2,11 +2,15 @@
 using System.Diagnostics;
 using System.Threading;
 
-public class SomaDeMatrizes
+public interface ISomaDeMatrizes
 {
-    public static void Soma()
+    void Soma(int size);
+}
+
+public class SomaDeMatrizes : ISomaDeMatrizes
+{
+    public void Soma(int size)
     {
-        int size = 100; // Alterar para 1000, 10000, 100000 conforme necessário
         int[,] matrixA = GenerateMatrix(size);
         int[,] matrixB = GenerateMatrix(size);
 
