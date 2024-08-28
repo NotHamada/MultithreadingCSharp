@@ -4,12 +4,12 @@ using System.Threading;
 
 public interface ISomaDeMatrizes
 {
-    void Soma(int size);
+    void Soma(int size, bool isSequential);
 }
 
 public class SomaDeMatrizes : ISomaDeMatrizes
 {
-    public void Soma(int size)
+    public void Soma(int size, bool isSequential)
     {
         int[,] matrixA = GenerateMatrix(size);
         int[,] matrixB = GenerateMatrix(size);
@@ -17,10 +17,18 @@ public class SomaDeMatrizes : ISomaDeMatrizes
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
 
-        int[,] result = AddMatricesParallel(matrixA, matrixB, 4); // 4 threads
+        if (isSequential)
+        {
+            var sequential = AddMatricesSequential(matrixA, matrixB, size);
+        }
+        else
+        {
+            var parallel = AddMatricesParallel(matrixA, matrixB, 4);
+        }
 
         stopwatch.Stop();
-        Console.WriteLine($"Tempo para soma paralela de matrizes de tamanho {size}: {stopwatch.ElapsedMilliseconds} ms");
+        Console.WriteLine(
+            $"Tempo para soma paralela de matrizes de tamanho {size}: {stopwatch.ElapsedMilliseconds} ms");
     }
 
     static int[,] GenerateMatrix(int size)
@@ -32,6 +40,21 @@ public class SomaDeMatrizes : ISomaDeMatrizes
             matrix[i, j] = random.Next(1, 100);
 
         return matrix;
+    }
+
+    static int[,] AddMatricesSequential(int[,] matrixA, int[,] matrixB, int size)
+    {
+        int[,] result = new int[size, size];
+
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                result[i, j] = matrixA[i, j] + matrixB[i, j];
+            }
+        }
+
+        return result;
     }
 
     static int[,] AddMatricesParallel(int[,] matrixA, int[,] matrixB, int threadCount)

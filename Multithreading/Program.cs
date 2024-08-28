@@ -7,7 +7,7 @@ public class Program
         SomaDeMatrizes somaDeMatrizes = new SomaDeMatrizes();
         MultiplicacaoDeMatrizes multiplicacaoDeMatrizes = new MultiplicacaoDeMatrizes();
         
-        multiplicacaoDeMatrizes.Multiplicacao(1000);
-        //somaDeMatrizes.Soma(10000);
+        multiplicacaoDeMatrizes.Multiplicacao(100000, true);
+        //somaDeMatrizes.Soma(10000, true);
     }
 }
