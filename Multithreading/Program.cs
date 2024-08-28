@@ -13,5 +13,8 @@ public class Program
 
         //multiplicacaoDeMatrizes.Multiplicacao(100000, true);
         //somaDeMatrizes.Soma(10000, true);
+        
+        multiplicacaoDeMatrizes.Multiplicacao(10000, true);
+        somaDeMatrizes.Soma(10000, true);
     }
 }

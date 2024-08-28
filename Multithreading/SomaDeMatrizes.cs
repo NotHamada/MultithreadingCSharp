@@ -27,8 +27,16 @@ public class SomaDeMatrizes : ISomaDeMatrizes
         }
 
         stopwatch.Stop();
-        Console.WriteLine(
+        if(isSequential)
+        {
+            Console.WriteLine(
+            $"Tempo para soma sequencial de matrizes de tamanho {size}: {stopwatch.ElapsedMilliseconds} ms");
+        }
+        else
+        {
+            Console.WriteLine(
             $"Tempo para soma paralela de matrizes de tamanho {size}: {stopwatch.ElapsedMilliseconds} ms");
+        }
     }
 
     static int[,] GenerateMatrix(int size)
