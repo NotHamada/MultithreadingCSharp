@@ -6,8 +6,12 @@ public class Program
     {
         SomaDeMatrizes somaDeMatrizes = new SomaDeMatrizes();
         MultiplicacaoDeMatrizes multiplicacaoDeMatrizes = new MultiplicacaoDeMatrizes();
-        
-        multiplicacaoDeMatrizes.Multiplicacao(100000, true);
+        InversaoDeMatrizes inversaoDeMatrizes = new InversaoDeMatrizes();
+
+        inversaoDeMatrizes.Inversao(1000, false);
+         
+
+        //multiplicacaoDeMatrizes.Multiplicacao(100000, true);
         //somaDeMatrizes.Soma(10000, true);
     }
 }
